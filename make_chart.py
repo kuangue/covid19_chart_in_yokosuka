@@ -9,7 +9,7 @@ from datetime import timedelta
 
 def get_datelist():
     strdt = dt.strptime("2020-03-01", '%Y-%m-%d')
-    enddt = dt.today()
+    enddt = dt.today() - timedelta(days=1)
 
     days_num = (enddt - strdt).days + 1
 
@@ -38,19 +38,18 @@ if __name__=='__main__':
         if idx in chart:
             full_date[idx]=chart[idx]
 
-    df_full_date=pd.DataFrame({'each':full_date})
-    df_full_date['sum']=0
+    df_full_date=pd.DataFrame({'新規感染者数':full_date})
+    df_full_date['感染者総数']=0
 
     psum = 0
     for idx,item in df_full_date.iterrows():
-        psum=psum+df_full_date.at[idx, 'each']
-        df_full_date.at[idx, 'sum']=psum
+        psum=psum+df_full_date.at[idx, '新規感染者数']
+        df_full_date.at[idx, '感染者総数']=psum
 
-
-    plt.plot(df_full_date)
     tdy=dd.today().strftime('%Y-%m-%d')
-    plt.title('新規感染者数(横須賀市)'+tdy)
-    plt.xlabel('日付')
-    plt.ylabel('新規感染者数')
-    plt.gcf().autofmt_xdate()
-    plt.savefig('chart_of_covid19_in_yokosuka.png')
+
+    ax = df_full_date.plot(title='新規感染者数(横須賀市)'+tdy)
+    ax.set_xlabel('日付')
+    ax.set_ylabel('染者数')
+    fig = ax.get_figure()
+    fig.savefig('chart_of_covid19_in_yokosuka.png')
