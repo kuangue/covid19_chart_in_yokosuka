@@ -9,7 +9,7 @@ from datetime import timedelta
 
 def get_datelist():
     strdt = dt.strptime("2020-03-01", '%Y-%m-%d')
-    enddt = dt.today() - timedelta(days=1)
+    enddt = dt.today()
 
     days_num = (enddt - strdt).days + 1
 
