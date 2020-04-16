@@ -49,7 +49,7 @@ def line_chart(lst):
     # describe chart
     ax = df_full_date.plot(title='新規感染者数(横須賀市)'+tdy)
     ax.set_xlabel('日付')
-    ax.set_ylabel('染者数')
+    ax.set_ylabel('感染者数')
     fig = ax.get_figure()
     fig.savefig('chart_of_covid19_in_yokosuka.png')
 
