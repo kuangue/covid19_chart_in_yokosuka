@@ -6,3 +6,4 @@ https://www.city.yokosuka.kanagawa.jp/3130/hasseijoukyou.html
 の情報を元に作成しています。
 
 ![chart](https://github.com/kuangue/covid19_chart_in_yokosuka/blob/master/chart_of_covid19_in_yokosuka.png)
+![chart](https://github.com/kuangue/covid19_chart_in_yokosuka/blob/master/pie_chart_of_age_in_yokosuka.png)
