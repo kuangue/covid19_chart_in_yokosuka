@@ -24,8 +24,10 @@ def get_datelist():
 
 def line_chart(lst):
     df = lst[0].sort_values('患者確定日')
+    trans_table = str.maketrans('１２３４５６７８９０', '1234567890')
+
     for idx, row in df.iterrows():
-        df.at[idx, '患者確定日']=pd.to_datetime("2020年"+row['患者確定日'], format='%Y年%m月%d日')
+        df.at[idx, '患者確定日']=pd.to_datetime("2020年"+row['患者確定日'].translate(trans_table), format='%Y年%m月%d日')
 
     chart=df.groupby('患者確定日').size()
 
