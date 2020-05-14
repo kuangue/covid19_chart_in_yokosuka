@@ -23,7 +23,7 @@ def get_datelist():
     return full_date
 
 def line_chart(lst):
-    df = lst[0].sort_values('患者確定日')
+    df = lst[1].sort_values('患者確定日')
     trans_table = str.maketrans('１２３４５６７８９０', '1234567890')
 
     for idx, row in df.iterrows():
@@ -56,7 +56,7 @@ def line_chart(lst):
     fig.savefig('chart_of_covid19_in_yokosuka.png')
 
 def pie_chart_age(lst):
-    df = lst[0]
+    df = lst[1].sort_values('患者確定日')
     filtered_df=df.query('年代 != "-"')
     grouped_se = filtered_df.groupby('年代').size()
     print(type(grouped_se))
